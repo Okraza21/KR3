@@ -37,16 +37,14 @@ class Tomato:
 
 class TomatoBush:
     def __init__(self, kol_tomat):
-        self.kol_tomat = kol_tomat
-        self.tomatoes = [tomat1, tomat2, tomat3]
+        self.tomatoes = [Tomato(i) for i in range(0, kol_tomat)]
     def grow_all(self):
-        if tomat1 != 3:
-            tomat1 += 1
+        for tomato in self.tomatoes:
+            tomato.grow()
     def all_are_ripe(self):
-        if TomatoBush.grow_all(self) == 3:
-            return True
+        return all([tomato.is_ripe() for tomato in self.tomatoes])
     def give_away_all(self):
-        pass
+        self.tomatoes = []
 
 
 
