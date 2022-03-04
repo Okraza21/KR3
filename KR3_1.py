@@ -10,25 +10,19 @@
 # 5. Создайте метод is_ripe(), который будет проверять, что томат созрел (достиг
 # последней стадии созревания
 class Tomato:
-    states = {1: 'Зелёный', 2: 'Жёлтый', 3: 'Красный'}
+    states = {0: 'Расток', 1: 'Зелёный', 2: 'Жёлтый', 3: 'Красный'}
     def __init__(self, a):
         self._index = a
-        self._state = Tomato.states[1]
+        self._state = 0
     def grow(self):
-        return Tomato.states[self._index]
+        if self._state < 3:
+            self._state += 1
 
     def is_ripe(self):
-        if Tomato.grow(self) == 'Красный':
+        if self._state == 3:
             print('Томат созрел')
         else:
             print('Томат ещё не созрел')
-tomat1 = Tomato(1)
-tomat2 = Tomato(2)
-tomat3 = Tomato(3)
-tomat1.is_ripe()
-tomat2.is_ripe()
-tomat3.is_ripe()
-
 # Класс TomatoBush
 # 1. Создайте класс TomatoBush
 # 2. Определите метод __init__(), который будет принимать в качестве параметра
